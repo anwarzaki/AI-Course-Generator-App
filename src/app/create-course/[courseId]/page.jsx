@@ -8,7 +8,7 @@ import CourseBasicInfo from "./_components/CourseBasicInfo";
 import CourseDetail from "./_components/CourseDetail";
 import ChapterList from "./_components/ChapterList";
 import { Button } from "@/components/ui/button";
-import { GenerateChapterContent_AI, GenerateCourseLayout_AI } from "../../../../configs/AiModel";
+import { GenerateChapterContent_AI } from "../../../../configs/AiModel";
 import LoadingDialog from "../_components/LoadingDialog";
 import service from "../../../../configs/service";
 import { useRouter } from "next/navigation";
@@ -77,7 +77,7 @@ const PageLayout = ({ params }) => {
           const content = JSON.parse(cleanResponse);
           console.log("Content:", content);
 
-          let videoId = "";
+          // let videoId = "";
           try {
             const videoResp = await service.getVideos(`${course.name}: ${chapter.chapter_name}`);
             videoId = videoResp[0]?.id?.videoId || "";
@@ -122,6 +122,6 @@ const PageLayout = ({ params }) => {
       </div>
     </div>
   );
-};  
+};
 
 export default PageLayout;
